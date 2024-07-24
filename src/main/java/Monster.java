@@ -60,6 +60,6 @@ public abstract class Monster {
     }
     @Override
     public String toString() {
-        return "has : hp=" + getHp()  +"/" + getMaxHP();
+        return "hp=" + getHp()  +"/" + getMaxHP();
     }
 }
