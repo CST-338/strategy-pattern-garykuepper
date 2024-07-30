@@ -113,6 +113,25 @@ public abstract class Monster {
         return rand.nextInt(max - min) + min;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Monster monster = (Monster) o;
+        return Objects.equals(hp, monster.hp) &&
+                Objects.equals(xp, monster.xp) &&
+                Objects.equals(maxHP, monster.maxHP) &&
+                Objects.equals(items, monster.items) &&
+                Objects.equals(agi, monster.agi) &&
+                Objects.equals(def, monster.def) &&
+                Objects.equals(str, monster.str) &&
+                Objects.equals(attack, monster.attack);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hp, xp, maxHP, items, agi, def, str, attack);
+    }
 
     @Override
     public String toString() {
