@@ -6,9 +6,9 @@ public abstract class Monster {
     private Integer xp = 10;
     private Integer maxHP;
     private HashMap<String, Integer> items;
-    private Integer agility = 10;
-    private Integer defense = 10;
-    private Integer strength = 10;
+    private Integer agi = 10;
+    private Integer def = 10;
+    private Integer str = 10;
     private Attack attack;
 
 
@@ -64,19 +64,22 @@ public abstract class Monster {
     }
 
     public Integer attackTarget(Monster monster) {
-        return 0;
+
+        int damage = attack.attack(monster);
+        monster.takeDamage(damage);
+        return damage;
     }
 
     /**
-     *  This method calues if the target has taken any damage, and determines
-     *  if the targets hp has fallen below 0.  If the damage value is greater
-     *  than 0, the damaage amount is subtracted from current hp value.
+     * This method calues if the target has taken any damage, and determines
+     * if the targets hp has fallen below 0.  If the damage value is greater
+     * than 0, the damaage amount is subtracted from current hp value.
      *
      * @param damage
      * @return
      */
     public boolean takeDamage(Integer damage) {
-        if (damage > 0 ) {
+        if (damage > 0) {
             hp = hp - damage;
             System.out.println(String.format("The creature was hit for [%d] damage", damage));
             if (hp <= 0) {
@@ -90,11 +93,12 @@ public abstract class Monster {
     }
 
     /**
-     *  THis method returns an integer value between min and max.
-     *  This is goofy.  rand.nextInt(n) returns a number between 0-n
-     *  to get the value we want, a value between str - maxStr
-     *  We need to get a random number from maxStr-str and
-     *  add str back in.
+     * THis method returns an integer value between min and max.
+     * This is goofy.  rand.nextInt(n) returns a number between 0-n
+     * to get the value we want, a value between str - maxStr
+     * We need to get a random number from maxStr-str and
+     * add str back in.
+     *
      * @param min
      * @param max
      * @return a random integer between min and max
@@ -106,25 +110,12 @@ public abstract class Monster {
             min = max;
             max = temp;
         }
-        return rand.nextInt(max-min) + min;
+        return rand.nextInt(max - min) + min;
     }
 
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Monster monster = (Monster) o;
-        return hp == monster.hp && xp == monster.xp && maxHP == monster.maxHP && Objects.equals(items, monster.items);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(hp, xp, maxHP, items);
-    }
     @Override
     public String toString() {
-        return "hp=" + getHp()  +"/" + getMaxHP();
+        return "hp=" + getHp() + "/" + getMaxHP();
     }
 }
