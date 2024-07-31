@@ -6,10 +6,10 @@ public abstract class Monster {
     private Integer xp = 10;
     private Integer maxHP;
     private HashMap<String, Integer> items;
-    private Integer agi = 10;
-    private Integer def = 10;
-    private Integer str = 10;
-    private Attack attack;
+    Integer agi = 10;
+    Integer def = 10;
+    Integer str = 10;
+    Attack attack;
 
 
     public Monster(Integer maxHP, Integer xp, HashMap<String, Integer> items) {
@@ -103,7 +103,7 @@ public abstract class Monster {
      * @param max
      * @return a random integer between min and max
      */
-    public Integer getAttribute(Integer min, Integer max) {
+    Integer getAttribute(Integer min, Integer max) {
         Random rand = new Random();
         if (min > max) {
             Integer temp = min;
