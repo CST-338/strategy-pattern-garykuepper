@@ -1,15 +1,18 @@
+package Monsters;
+import Abilities.Attack;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.Random;
 
 public abstract class Monster {
     private Integer hp;
     private Integer xp = 10;
     private Integer maxHP;
     private HashMap<String, Integer> items;
-    private Integer agi = 10;
-    private Integer def = 10;
-    private Integer str = 10;
-    private Attack attack;
+    Integer agility = 10;
+    Integer defense = 10;
+    Integer strength = 10;
+    Attack attack;
 
 
     public Monster(Integer maxHP, Integer xp, HashMap<String, Integer> items) {
@@ -52,15 +55,15 @@ public abstract class Monster {
     }
 
     public Integer getAgility() {
-        return agility;
+        return this.agility;
     }
 
     public Integer getDefense() {
-        return defense;
+        return this.defense;
     }
 
     public Integer getStrength() {
-        return strength;
+        return this.strength;
     }
 
     public Integer attackTarget(Monster monster) {
@@ -122,15 +125,15 @@ public abstract class Monster {
                 Objects.equals(xp, monster.xp) &&
                 Objects.equals(maxHP, monster.maxHP) &&
                 Objects.equals(items, monster.items) &&
-                Objects.equals(agi, monster.agi) &&
-                Objects.equals(def, monster.def) &&
-                Objects.equals(str, monster.str) &&
+                Objects.equals(agility, monster.agility) &&
+                Objects.equals(defense, monster.defense) &&
+                Objects.equals(strength, monster.strength) &&
                 Objects.equals(attack, monster.attack);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(hp, xp, maxHP, items, agi, def, str, attack);
+        return Objects.hash(hp, xp, maxHP, items, agility, defense, strength, attack);
     }
 
     @Override

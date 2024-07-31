@@ -1,3 +1,6 @@
+package Monsters;
+import Abilities.*;
+
 import java.util.HashMap;
 
 public class Imp extends Monster {
@@ -11,9 +14,9 @@ public class Imp extends Monster {
 
         attack = new MeleeAttack(this);
 
-        str = super.getAttribute(str, maxStr);
-        def = super.getAttribute(def, maxDef);
-        agi = super.getAttribute(agi, maxDef);
+        strength = super.getAttribute(strength, maxStr);
+        defense = super.getAttribute(defense, maxDef);
+        agility = super.getAttribute(agility, maxAgi);
     }
 
     @Override
